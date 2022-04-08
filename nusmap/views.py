@@ -1,9 +1,14 @@
-from django.shortcuts import render
-
+from django.shortcuts import render, HttpResponse
+from .models import *
 # Create your views here.
 
 def home(request):
+    
     return render(request, "store/index.html")
 
 def collections(request):
-    return r
+    category=Category.objects.filter(status=0)
+    context={"category":category}
+    return render(request, 'store/collections.html', context )
+    
+
